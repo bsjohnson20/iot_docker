@@ -1,0 +1,12 @@
+services:
+  iot:
+    build: .
+    ports:
+      - "2222:22"
+    volumes:
+      - ./data:/home/iot/data
+      - ./opt/iot:/opt/iot:ro
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
